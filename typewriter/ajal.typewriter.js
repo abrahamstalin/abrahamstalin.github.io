@@ -4,8 +4,13 @@ class AjalTypeWriter{
     this.time = 40;
     this.element = document.getElementById(this.id);
     this.text = this.element.getAttribute("atw-text");
+    this.textAll = this.element.getAttribute("atw-text");
+    if (this.element.getAttribute("atw-time")){
+      this.time = parseInt(this.element.getAttribute("atw-time"));
+    }
     this.textArray = this.text.split('');
     this.newTextArray = [];
+    this.timeProcess = 900;
   }
 
 
@@ -13,6 +18,38 @@ class AjalTypeWriter{
     this.process();
   }
 
+  infinity(ejecutando = false){
+
+    if (!ejecutando){
+      ejecutando = true;
+      this.process();
+    }
+
+    if (this.textArray.join('')==this.newTextArray.join('')){
+      this.infinityTwo(false);
+    }else{
+      setTimeout(()=>{
+          this.infinity(ejecutando);
+        },this.timeProcess);
+
+    }
+
+  }
+  infinityTwo(ejecutando = false){
+    if (!ejecutando){
+      ejecutando = true;
+      this.reverse();
+    }
+
+    if (''==this.newTextArray.join('')){
+      this.infinity(false);
+    }else{
+      setTimeout(()=>{
+          this.infinityTwo(ejecutando);
+        },this.timeProcess);
+    }
+
+  }
   reverse(){
     if (this.newTextArray.length == 0){
       this.newTextArray = this.textArray;
