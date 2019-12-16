@@ -1,7 +1,12 @@
 html,body{
   font-family: roboto;
 }
-
+.footer{
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    font-size: 11px;
+}
 .c-pading{
   padding: 10px;
 }
